@@ -37,6 +37,15 @@ body {
     height: auto;
 }
 
+.title-logo {
+    color: black;
+}
+
+.title-logo:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7);
+}
+
 .subtitle {
     text-align: center;
     margin: 3%;
