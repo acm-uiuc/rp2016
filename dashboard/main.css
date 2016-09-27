@@ -42,6 +42,7 @@ a:hover, a:focus, a:visited, a:active {
     z-index: 999;
     text-align: center;
     margin: 0 auto;
+
 }
 
 .main-content-area-wrapper {
@@ -57,17 +58,15 @@ a:hover, a:focus, a:visited, a:active {
 .flip-clock-wrapper {
     text-align: center;
     margin: 0 !important;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
-    justify-content: center;
+
 }
 
 .clock {
+    text-align: center;
     zoom: 1.2;
     -moz-transform: scale(1.2);
+    display: inline-block;
+    width: auto;
 }
 
 .flip-clock-divider .flip-clock-label {
