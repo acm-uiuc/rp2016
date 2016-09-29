@@ -63,8 +63,8 @@ a:hover, a:focus, a:visited, a:active {
 
 .clock {
     text-align: center;
-    zoom: 1.2;
-    -moz-transform: scale(1.2);
+    /*zoom: 1.2;*/
+    /*-moz-transform: scale(1.2);*/
     display: inline-block;
     width: auto;
 }
