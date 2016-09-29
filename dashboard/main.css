@@ -100,6 +100,11 @@ a:hover, a:focus, a:visited, a:active {
     height: 100px;
 }
 
+.happening-next-container {
+    width: 100%;
+    text-align: center;
+}
+
 /*Footer*/
 
 .footer {

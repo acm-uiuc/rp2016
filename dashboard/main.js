@@ -207,8 +207,7 @@ var events_list = [startup_panel, startup_fair, speaker_1, dinner_1, breakfast_1
 $(document).ready(function() {
 
     // var now = new Date(); // Now
-    var now = new Date(Date.parse("October 1, 2016 7:49 PM"));
-
+    var now = new Date(Date.parse("September 30, 2016 5:01 PM"));
     console.log(now);
 
     var date = new Date(2016, 8, 29, 12, 0, 0, 0); // RP Start Date
@@ -250,6 +249,7 @@ function startTime() {
     var today = new Date();
     var h = today.getHours();
     if(h > 12) h = h-12;
+    if(h == 0) h = 12;
     var m = today.getMinutes();
     var s = today.getSeconds();
     m = checkTime(m);
@@ -264,6 +264,9 @@ function checkTime(i) {
 }
 
 function checkEvents(now, events_list) {
+    console.log("Now:");
+    console.log(now);
+    var found_event = 0;
 
     for(var i = 0; i < events_list.length; i++) {
 
@@ -271,6 +274,7 @@ function checkEvents(now, events_list) {
         var end_time = new Date(Date.parse(events_list[i].end_time));
 
         if(now > start_time && now < end_time) {
+            found_event = 1;
             // console.log("Found an item");
             $('#happening-now-title').html(events_list[i].name);
             $('#happening-now-desc').html(events_list[i].location);
@@ -283,7 +287,45 @@ function checkEvents(now, events_list) {
                 $('#happening-now').css("text-align", "left");
                 $('#happening-now-picture').attr("src", events_list[i].img_url);
             }
+
+            if(i == events_list.length-1) {
+                // Do nothing
+            } else {
+                var next_event = new Date(Date.parse(events_list[i+1].start_time));
+                var hours = next_event.getHours();
+                if(hours > 12) hours = hours - 12;
+                $('#happening-next-name').html(events_list[i+1].name);
+                $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()));
+            }
         }
+
+    }
+
+    if(found_event == 0) {
+        // We didn't find an event
+        console.log("Didn't find an event") ;
+        $('#happening-now-picture-container').hide();
+        $('#happening-now-body').hide();
+        $('#happening-now').css("text-align", "center");
+
+        var next_event_index = 0;
+        for(var i = 0; i < events_list.length; i++) {
+
+            var start_time = new Date(Date.parse(events_list[i+1].start_time));
+            var end_time = new Date(Date.parse(events_list[i].end_time));
+
+            if(now > end_time && now < start_time) {
+                next_event_index = i;
+                i = events_list.length; // Ends loops
+                console.log(events_list[next_event_index]);
+            }
+        }
+
+        var next_event = new Date(Date.parse(events_list[next_event_index+1].start_time));
+        var hours = next_event.getHours();
+        if(hours > 12) hours = hours - 12;
+        $('#happening-next-name').html(events_list[next_event_index+1].name);
+        $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()));
 
     }
 
