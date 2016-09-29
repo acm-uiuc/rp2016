@@ -33,7 +33,7 @@ var dinner_1 = {
     desc: "",
     start_time: "September 29, 2016 7:00 PM",
     end_time: "September 29, 2016 8:00 PM",
-    location: "Siebel Atrium",
+    location: "Siebel 1404",
     img_url: ""
 };
 
