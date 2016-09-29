@@ -206,13 +206,13 @@ var events_list = [startup_panel, startup_fair, speaker_1, dinner_1, breakfast_1
 
 $(document).ready(function() {
 
-    // var now = new Date(); // Now
-    var now = new Date(Date.parse("September 30, 2016 5:01 PM"));
-    console.log(now);
+    var now = new Date(); // Now
+    // var now = new Date(Date.parse("October 1, 2016 5:00 PM"));
+    // console.log(now);
 
     var date = new Date(2016, 8, 29, 12, 0, 0, 0); // RP Start Date
 
-    if(now > date) {
+    if(now >= date) {
         startTime();
 
         // Date handling
@@ -233,7 +233,8 @@ $(document).ready(function() {
             autoStart: false,
             callbacks: {
                 stop: function() {
-                    $('.message').html('Reflections | Projections 2016 is here!')
+                    // $('#caption').html('Reflections | Projections 2016 is here!')
+                    location.reload();
                 }
             }
         });
@@ -264,16 +265,27 @@ function checkTime(i) {
 }
 
 function checkEvents(now, events_list) {
-    console.log("Now:");
-    console.log(now);
+
+    //console.log(now);
     var found_event = 0;
+
+    var rp_end_time = new Date(Date.parse("October 1, 2016 9:00 PM"));
+
+    if(now >= rp_end_time) {
+        $('#happening-next-container').html("");
+        $('#happening-now-title').html("Thank you for coming!");
+        $('#happening-now-picture-container').hide();
+        $('#happening-now-body').hide();
+        $('#happening-now').css("text-align", "center");
+        return;
+    }
 
     for(var i = 0; i < events_list.length; i++) {
 
         var start_time = new Date(Date.parse(events_list[i].start_time));
         var end_time = new Date(Date.parse(events_list[i].end_time));
 
-        if(now > start_time && now < end_time) {
+        if(now >= start_time && now < end_time) {
             found_event = 1;
             // console.log("Found an item");
             $('#happening-now-title').html(events_list[i].name);
@@ -290,12 +302,14 @@ function checkEvents(now, events_list) {
 
             if(i == events_list.length-1) {
                 // Do nothing
+                $('#happening-next-container').html("Next: Nothing! Thank you for coming!")
             } else {
                 var next_event = new Date(Date.parse(events_list[i+1].start_time));
                 var hours = next_event.getHours();
                 if(hours > 12) hours = hours - 12;
                 $('#happening-next-name').html(events_list[i+1].name);
                 $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()));
+
             }
         }
 
@@ -303,7 +317,7 @@ function checkEvents(now, events_list) {
 
     if(found_event == 0) {
         // We didn't find an event
-        console.log("Didn't find an event") ;
+        //console.log("Didn't find an event") ;
         $('#happening-now-picture-container').hide();
         $('#happening-now-body').hide();
         $('#happening-now').css("text-align", "center");
@@ -314,7 +328,7 @@ function checkEvents(now, events_list) {
             var start_time = new Date(Date.parse(events_list[i+1].start_time));
             var end_time = new Date(Date.parse(events_list[i].end_time));
 
-            if(now > end_time && now < start_time) {
+            if(now >= end_time && now < start_time) {
                 next_event_index = i;
                 i = events_list.length; // Ends loops
                 console.log(events_list[next_event_index]);
