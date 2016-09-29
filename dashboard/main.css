@@ -112,7 +112,7 @@ a:hover, a:focus, a:visited, a:active {
     position: absolute;
     bottom: 0;
     height: 10%;
-    min-height: 100px;
+    min-height: 40px;
     max-height: 200px;
     z-index: 999;
     color: white;
