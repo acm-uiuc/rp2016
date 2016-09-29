@@ -82,6 +82,24 @@ a:hover, a:focus, a:visited, a:active {
     width: 100%;
 }
 
+/*Happening Now*/
+#happening-now {
+    text-align: left;
+    width: 100%;
+}
+
+.center-children {
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#happening-now-picture {
+    width: 100px;
+    height: 100px;
+}
+
 /*Footer*/
 
 .footer {
