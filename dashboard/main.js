@@ -306,9 +306,13 @@ function checkEvents(now, events_list) {
             } else {
                 var next_event = new Date(Date.parse(events_list[i+1].start_time));
                 var hours = next_event.getHours();
-                if(hours > 12) hours = hours - 12;
+                var time_of_day = "AM";
+                if(hours > 12) {
+                    hours = hours - 12;
+                    time_of_day = "PM";
+                }
                 $('#happening-next-name').html(events_list[i+1].name);
-                $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()));
+                $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()) + " " + time_of_day);
 
             }
         }
