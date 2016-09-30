@@ -331,7 +331,9 @@ function checkEvents(now, events_list) {
         $('#happening-now-picture-container').hide();
         $('#happening-now-body').hide();
         $('#happening-now').css("text-align", "center");
+
         var next_event_index = 0;
+
         for(var i = 0; i < events_list.length; i++) {
 
             var start_time = new Date(Date.parse(events_list[i+1].start_time));
@@ -347,12 +349,13 @@ function checkEvents(now, events_list) {
         var next_event = new Date(Date.parse(events_list[next_event_index+1].start_time));
         var hours = next_event.getHours();
         var time_of_day = "AM";
+
         if(hours > 12) {
             hours = hours - 12;
             time_of_day = "PM";
         }
 
-        if(events_list[i+1].name == "Breakfast") {
+        if(events_list[next_event_index+1].name == "Breakfast") {
             time_of_day = time_of_day + " tomorrow";
         }
 
