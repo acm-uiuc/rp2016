@@ -311,7 +311,13 @@ function checkEvents(now, events_list) {
                     hours = hours - 12;
                     time_of_day = "PM";
                 }
+
                 $('#happening-next-name').html(events_list[i+1].name);
+
+                if(events_list[i+1].name == "Breakfast") {
+                    time_of_day = time_of_day + " tomorrow";
+                }
+
                 $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()) + " " + time_of_day);
 
             }
@@ -345,6 +351,11 @@ function checkEvents(now, events_list) {
             hours = hours - 12;
             time_of_day = "PM";
         }
+
+        if(events_list[i+1].name == "Breakfast") {
+            time_of_day = time_of_day + " tomorrow";
+        }
+
         $('#happening-next-name').html(events_list[next_event_index+1].name);
         $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()) + " " + time_of_day);
 
