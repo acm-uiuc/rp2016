@@ -356,7 +356,7 @@ function checkEvents(now, events_list) {
         }
 
         if(events_list[next_event_index+1].name == "Breakfast") {
-            time_of_day = time_of_day + " tomorrow";
+            // time_of_day = time_of_day + " tomorrow";
         }
 
         $('#happening-next-name').html(events_list[next_event_index+1].name);
