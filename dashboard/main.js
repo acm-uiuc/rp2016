@@ -321,7 +321,6 @@ function checkEvents(now, events_list) {
         $('#happening-now-picture-container').hide();
         $('#happening-now-body').hide();
         $('#happening-now').css("text-align", "center");
-
         var next_event_index = 0;
         for(var i = 0; i < events_list.length; i++) {
 
@@ -337,9 +336,13 @@ function checkEvents(now, events_list) {
 
         var next_event = new Date(Date.parse(events_list[next_event_index+1].start_time));
         var hours = next_event.getHours();
-        if(hours > 12) hours = hours - 12;
+        var time_of_day = "AM";
+        if(hours > 12) {
+            hours = hours - 12;
+            time_of_day = "PM";
+        }
         $('#happening-next-name').html(events_list[next_event_index+1].name);
-        $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()));
+        $('#happening-next-time').html(hours + ":" + checkTime(next_event.getMinutes()) + " " + time_of_day);
 
     }
 
