@@ -312,6 +312,10 @@ function checkEvents(now, events_list) {
                     time_of_day = "PM";
                 }
 
+                if(hours == 12) {
+                    time_of_day = "PM";
+                }
+
                 $('#happening-next-name').html(events_list[i+1].name);
 
                 if(events_list[i+1].name == "Breakfast") {
@@ -352,6 +356,10 @@ function checkEvents(now, events_list) {
 
         if(hours > 12) {
             hours = hours - 12;
+            time_of_day = "PM";
+        }
+
+        if(hours == 12) {
             time_of_day = "PM";
         }
 
