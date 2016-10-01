@@ -206,8 +206,8 @@ var events_list = [startup_panel, startup_fair, speaker_1, dinner_1, breakfast_1
 
 $(document).ready(function() {
 
-    // var now = new Date(); // Now
-    var now = new Date(Date.parse("September 30, 2016 8:00 PM"));
+    var now = new Date(); // Now
+    // var now = new Date(Date.parse("September 30, 2016 8:00 PM"));
     // console.log(now);
 
     var date = new Date(2016, 8, 29, 12, 0, 0, 0); // RP Start Date
