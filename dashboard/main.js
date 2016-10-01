@@ -118,7 +118,7 @@ var speaker_5 = {
     start_time: "October 1, 2016 11:00 AM",
     end_time: "October 1, 2016 11:50 AM",
     location: "Siebel 1404",
-    img_url: "../assets/img/speakers/laura.png"
+    img_url: "../assets/img/speakers/laura.jpg"
 };
 
 var lunch = {
