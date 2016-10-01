@@ -89,7 +89,7 @@ a:hover, a:focus, a:visited, a:active {
 }
 
 .center-children {
-    width: 50%;
+    width: 75%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
